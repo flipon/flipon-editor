@@ -1,69 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link href="/css/normalize.css" rel="stylesheet">
-    <link href="/css/site.css" rel="stylesheet">
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;1,300&display=swap"
-      rel="stylesheet"
-    >
-    <title>Flipon - level editor</title>
 
-    <meta name="twitter:title" content="Flipon">
-    <meta
-      name="twitter:description"
-      content="Flipon is a juicy and fun arcade puzzle game full of surprises!"
-    >
-    <meta property="og:title" content="Flipon">
-    <meta
-      property="og:description"
-      content="Flipon is a juicy and fun arcade puzzle game full of surprises!"
-    >
-    <meta name="author" content="Damien Mayance">
-    <meta
-      name="description"
-      content="Flipon is a juicy and fun arcade puzzle game full of surprises!"
-    >
-    <meta
-      name="keywords"
-      content="damien, mayance, flipon, panel de pon, puzzle league, tetris attack, panic attack, aurélien, regard"
-    >
-    <meta property="og:site_name" content="Flipon">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.flipon.net">
-    <meta property="og:locale" content="en">
-    <meta
-      property="og:image"
-      content="https://www.flipon.net/static/images/card.png"
-    >
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:height" content="1920">
-    <meta property="og:image:width" content="1080">
-    <meta name="twitter:card" content="photo">
-    <meta name="twitter:site" content="https://www.flipon.net">
-    <meta name="twitter:creator" content="flipongame">
-    <meta name="twitter:url" content="https://www.flipon.net">
-    <meta
-      name="twitter:image:src"
-      content="https://www.flipon.net/static/images/card.png"
-    >
-  </head>
-  <body>
-    <div class="page">
-      <header class="page-header">
-        <h1>Level editor</h1>
-      </header>
-      <main class="page-content" role="main">
-       TODO
-    
-      </main>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link href="/css/normalize.css" rel="stylesheet">
+  <link href="/css/site.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+  <title>Flipon - level editor</title>
 
-      <footer class="page-footer">
-        <p>Made with ❤ by Damien Mayance and a talented team.</p>
-      </footer>
-    </div>
-  </body>
+  <meta name="twitter:title" content="Flipon">
+  <meta name="twitter:description" content="Flipon is a juicy and fun arcade puzzle game full of surprises!">
+  <meta property="og:title" content="Flipon">
+  <meta property="og:description" content="Flipon is a juicy and fun arcade puzzle game full of surprises!">
+  <meta name="author" content="Damien Mayance">
+  <meta name="description" content="Flipon is a juicy and fun arcade puzzle game full of surprises!">
+  <meta name="keywords"
+    content="damien, mayance, flipon, panel de pon, puzzle league, tetris attack, panic attack, aurélien, regard">
+  <meta property="og:site_name" content="Flipon">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.flipon.net">
+  <meta property="og:locale" content="en">
+  <meta property="og:image" content="https://www.flipon.net/static/images/card.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:height" content="1920">
+  <meta property="og:image:width" content="1080">
+  <meta name="twitter:card" content="photo">
+  <meta name="twitter:site" content="https://www.flipon.net">
+  <meta name="twitter:creator" content="flipongame">
+  <meta name="twitter:url" content="https://www.flipon.net">
+  <meta name="twitter:image:src" content="https://www.flipon.net/static/images/card.png">
+</head>
+
+<body>
+  <div class="page">
+    <header class="page-header">
+      <a href="https://www.flipon.net"><img class="logo" src="./images/logo.png" alt="Flipon logo" /></a>
+      <h1>Level editor</h1>
+    </header>
+    <main class="page-content" role="main">
+      <!-- ------------------------ Settings -------------------------->
+      <div class="settings">
+        <h2>Level settings</h2>
+        <h3>Meta</h3>
+        <div>
+          <label for="author">Author</label>
+          <input type="text" id="author" onchange="updateLevel()" />
+        </div>
+        <div>
+          <label for="levelName">Level Name</label>
+          <input type="text" id="levelName" onchange="updateLevel()" />
+        </div>
+        <div>
+          <label for="description">Description</label>
+          <input type="text" id="description" onchange="updateLevel()" />
+        </div>
+        <h3>General</h3>
+        <div>
+          <label for="levelType">Level Type</label>
+          <select id="levelType" onchange="updateLevel()">
+            <option value="0">Objectives</option>
+            <option value="1">Challenge</option>
+            <option value="2">Puzzle</option>
+            <!-- <option value="3">Versus</option> -->
+            <option value="4">Survival</option>
+          </select>
+        </div>
+        <div>
+          <label for="background">Background Id (-1: random)</label>
+          <input type="number" id="background" oninput="updateLevel()" />
+        </div>
+
+        <div id="scrolling">
+          <div>
+            <label for="startLines">Start lines</label>
+            <input type="number" id="startLines" oninput="updateLevel()" />
+          </div>
+          <div>
+            <label for="previewLines">Preview lines</label>
+            <input type="checkbox" id="previewLines" oninput="updateLevel()" />
+          </div>
+          <div>
+            <label for="startSpeed">Start speed</label>
+            <input type="number" id="startSpeed" oninput="updateLevel()" />
+          </div>
+          <div>
+            <label for="limitSpeed">Speed limit (-1: none)</label>
+            <input type="number" id="limitSpeed" oninput="updateLevel()" />
+          </div>
+          <div>
+            <label for="noScrolling">Disable scrolling</label>
+            <input type="checkbox" id="noScrolling" oninput="updateLevel()" />
+          </div>
+          <div>
+            <label for="noSpeedUp">Disable speed</label>
+            <input type="checkbox" id="noSpeedUp" oninput="updateLevel()" />
+          </div>
+          <div>
+            <label for="seed">Seed</label>
+            <input type="number" id="seed" oninput="updateLevel()" />
+          </div>
+          <div>
+            <label for="timeLimit">Time limit (sec)</label>
+            <input type="number" id="timeLimit" oninput="updateLevel()" />
+          </div>
+        </div>
+        <div id="objectives">
+          <h3>Objectives</h3>
+
+          <div id="objectives-scrolling">
+            <div>
+              <label for="score">Score</label>
+              <input type="number" id="score" oninput="updateLevel()" />
+            </div>
+            <div>
+              <label for="timeReached">Time reached (sec)</label>
+              <input type="number" id="timeReached" oninput="updateLevel()" />
+            </div>
+            <div>
+              <label for="digHeight">Clear depth</label>
+              <input type="number" id="digHeight" oninput="updateLevel()" />
+            </div>
+          </div>
+          <div>
+            <label for="highestCombo">Max multiplier</label>
+            <input type="number" id="highestCombo" oninput="updateLevel()" />
+          </div>
+          <div>
+            <label for="totalCombos">Total combos</label>
+            <input type="number" id="totalCombos" oninput="updateLevel()" />
+          </div>
+          <div>
+            <label for="total4Combos">Total 4-blocks combos</label>
+            <input type="number" id="total4Combos" oninput="updateLevel()" />
+          </div>
+          <div>
+            <label for="total5Combos">Total 5-blocks combos</label>
+            <input type="number" id="total5Combos" oninput="updateLevel()" />
+          </div>
+          <div>
+            <label for="totalLCombos">Total L-shaped combos</label>
+            <input type="number" id="totalLCombos" oninput="updateLevel()" />
+          </div>
+          <div>
+            <label for="totalChains">Total chains</label>
+            <input type="number" id="totalChains" oninput="updateLevel()" />
+          </div>
+          <div>
+            <label for="highestChain">Highest chain</label>
+            <input type="number" id="highestChain" oninput="updateLevel()" />
+          </div>
+        </div>
+        <div id="puzzle">
+          <div>
+            <label for="maxMoves">Max moves (-1 : unlimited)</label>
+            <input type="number" id="maxMoves" oninput="updateLevel()" />
+          </div>
+        </div>
+
+        <h3>Modifiers</h3>
+        <div id="modifiers">
+          <h4>Modifiers</h4>
+          throwGarbage: {
+            enabled: false,
+            delay: 10,
+            duration: 60,
+            minFrequency: 0.15,
+            maxFrequency: 2,
+            playerCooldownSpeed: 0,
+            garbageSize: 2
+        },
+        changeColors: {
+            enabled: false,
+            delay: 10,
+            duration: 60,
+            cooldown: 15,
+            addNewColors: false
+        },
+        addBlocksModifier: {
+            enabled: false,
+            delay: 10,
+            duration: 60,
+            cooldown: 15,
+            blockCount: 2,
+            blocksColors: []
+        },
+        hideBlocksModifier: {
+            enabled: false,
+            delay: 10,
+            duration: 60,
+            gridHidePercent: 0.33,
+            coolhideDurationdown: 3,
+            wait: 5
+        },
+        </div>
+      </div>
+      <!-- ------------------------Grid -------------------------->
+      <div class="grid">
+        <h2>Grid</h2>
+        <div>
+          <label for="width">Width</label>
+          <input type="number" id="width" oninput="refreshGridSize()" />
+        </div>
+        <div>
+          <label for="width">Height</label>
+          <input type="number" id="height" oninput="refreshGridSize()" />
+        </div>
+        <div>
+          <canvas id="editor-grid" />
+        </div>
+      </div>
+      <!-- ------------------------ JSON -------------------------->
+      <div class="json">
+        <h2>JSON</h2>
+        <div>
+          <button id="btn-import" onclick="importJSON()">Import JSON</button>
+          <button id="btn-export" onclick="exportJSON()">Export JSON</button>
+        </div>
+        <div>
+          <textarea class="json-text" id="json-text" onchange="loadJSON()">
+            </textarea>
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="page-footer">
+      <p>Made with ❤ by Damien Mayance and a talented team.</p>
+    </footer>
+  </div>
+  <script src="./editor.js"></script>
+</body>
+
 </html>
