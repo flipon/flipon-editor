@@ -45,31 +45,38 @@ function fillInputs() {
     document.getElementById("digHeight").value = level.digHeight
     document.getElementById("maxMoves").value = level.maxMovesCount
     
-    document.getElementById("throwGarbage_enabled").value = level.throwGarbage.enabled
-    document.getElementById("throwGarbage_delay").value = level.throwGarbage.delay
-    document.getElementById("throwGarbage_duration").value = level.throwGarbage.duration
-    document.getElementById("throwGarbage_minFrequency").value = level.throwGarbage.minFrequency
-    document.getElementById("throwGarbage_maxFrequency").value = level.throwGarbage.maxFrequency
-    document.getElementById("throwGarbage_garbageSize").value = level.throwGarbage.garbageSize
+    document.getElementById("throwGarbage_enabled").value = level.throwGarbage != null
+    if(level.throwGarbage != null) {
+        document.getElementById("throwGarbage_delay").value = level.throwGarbage.delay
+        document.getElementById("throwGarbage_duration").value = level.throwGarbage.duration
+        document.getElementById("throwGarbage_minFrequency").value = level.throwGarbage.minFrequency
+        document.getElementById("throwGarbage_maxFrequency").value = level.throwGarbage.maxFrequency
+        document.getElementById("throwGarbage_garbageSize").value = level.throwGarbage.garbageSize
+    }
+    document.getElementById("changeColors_enabled").value = level.changeColors != null
+    if(level.changeColors != null) {
+        document.getElementById("changeColors_delay").value = level.changeColors.delay
+        document.getElementById("changeColors_duration").value = level.changeColors.duration
+        document.getElementById("changeColors_cooldown").value = level.changeColors.cooldown
+        document.getElementById("changeColors_addNewColors").value = level.changeColors.addNewColors
+    }
 
-    document.getElementById("changeColors_enabled").value = level.changeColors.enabled
-    document.getElementById("changeColors_delay").value = level.changeColors.delay
-    document.getElementById("changeColors_duration").value = level.changeColors.duration
-    document.getElementById("changeColors_cooldown").value = level.changeColors.cooldown
-    document.getElementById("changeColors_addNewColors").value = level.changeColors.addNewColors
+    document.getElementById("addBlocksModifier_enabled").value = level.addBlocksModifier != null
+    if(level.addBlocksModifier != null) {
+        document.getElementById("addBlocksModifier_delay").value = level.addBlocksModifier.delay
+        document.getElementById("addBlocksModifier_duration").value = level.addBlocksModifier.duration
+        document.getElementById("addBlocksModifier_cooldown").value = level.addBlocksModifier.cooldown
+        document.getElementById("addBlocksModifier_blockCount").value = level.addBlocksModifier.blockCount
+    }
 
-    document.getElementById("addBlocksModifier_enabled").value = level.addBlocksModifier.enabled
-    document.getElementById("addBlocksModifier_delay").value = level.addBlocksModifier.delay
-    document.getElementById("addBlocksModifier_duration").value = level.addBlocksModifier.duration
-    document.getElementById("addBlocksModifier_cooldown").value = level.addBlocksModifier.cooldown
-    document.getElementById("addBlocksModifier_blockCount").value = level.addBlocksModifier.blockCount
-
-    document.getElementById("hideBlocksModifier_enabled").value = level.hideBlocksModifier.enabled
-    document.getElementById("hideBlocksModifier_delay").value = level.hideBlocksModifier.delay
-    document.getElementById("hideBlocksModifier_duration").value = level.hideBlocksModifier.duration
-    document.getElementById("hideBlocksModifier_gridHidePercent").value = level.hideBlocksModifier.gridHidePercent
-    document.getElementById("hideBlocksModifier_hideDuration").value = level.hideBlocksModifier.hideDuration
-    document.getElementById("hideBlocksModifier_wait").value = level.hideBlocksModifier.wait
+    document.getElementById("hideBlocksModifier_enabled").value = level.hideBlocksModifier != null
+    if(level.hideBlocksModifier != null) {
+        document.getElementById("hideBlocksModifier_delay").value = level.hideBlocksModifier.delay
+        document.getElementById("hideBlocksModifier_duration").value = level.hideBlocksModifier.duration
+        document.getElementById("hideBlocksModifier_gridHidePercent").value = level.hideBlocksModifier.gridHidePercent
+        document.getElementById("hideBlocksModifier_hideDuration").value = level.hideBlocksModifier.hideDuration
+        document.getElementById("hideBlocksModifier_wait").value = level.hideBlocksModifier.wait
+    }
 }
 
 // Fill level data with inputs
@@ -103,31 +110,51 @@ function updateLevel() {
     level.digHeight = document.getElementById("digHeight").value
     level.maxMovesCount = document.getElementById("maxMoves").value
 
-    level.throwGarbage.enabled = document.getElementById("throwGarbage_enabled").checked
-    level.throwGarbage.delay = document.getElementById("throwGarbage_delay").value
-    level.throwGarbage.duration = document.getElementById("throwGarbage_duration").value
-    level.throwGarbage.minFrequency = document.getElementById("throwGarbage_minFrequency").value
-    level.throwGarbage.maxFrequency = document.getElementById("throwGarbage_maxFrequency").value
-    level.throwGarbage.garbageSize = document.getElementById("throwGarbage_garbageSize").value
+    if(document.getElementById("throwGarbage_enabled").checked){
+        if(level.throwGarbage == null) level.initGarbagesMod()
+        level.throwGarbage.delay = document.getElementById("throwGarbage_delay").value
+        level.throwGarbage.duration = document.getElementById("throwGarbage_duration").value
+        level.throwGarbage.minFrequency = document.getElementById("throwGarbage_minFrequency").value
+        level.throwGarbage.maxFrequency = document.getElementById("throwGarbage_maxFrequency").value
+        level.throwGarbage.garbageSize = document.getElementById("throwGarbage_garbageSize").value
+    }
+    else {
+        level.throwGarbage = null
+    }
 
-    level.changeColors.enabled = document.getElementById("changeColors_enabled").checked
-    level.changeColors.delay = document.getElementById("changeColors_delay").value
-    level.changeColors.duration = document.getElementById("changeColors_duration").value
-    level.changeColors.cooldown = document.getElementById("changeColors_cooldown").value
-    level.changeColors.addNewColors = document.getElementById("changeColors_addNewColors").value
+    if(document.getElementById("changeColors_enabled").checked){
+        if(level.changeColors == null) level.initChangeColorsMod()
+        level.changeColors.delay = document.getElementById("changeColors_delay").value
+        level.changeColors.duration = document.getElementById("changeColors_duration").value
+        level.changeColors.cooldown = document.getElementById("changeColors_cooldown").value
+        level.changeColors.addNewColors = document.getElementById("changeColors_addNewColors").value
+    }
+    else {
+        level.changeColors = null
+    }
 
-    level.addBlocksModifier.enabled = document.getElementById("addBlocksModifier_enabled").checked
-    level.addBlocksModifier.delay = document.getElementById("addBlocksModifier_delay").value
-    level.addBlocksModifier.duration = document.getElementById("addBlocksModifier_duration").value
-    level.addBlocksModifier.cooldown = document.getElementById("addBlocksModifier_cooldown").value
-    level.addBlocksModifier.blockCount = document.getElementById("addBlocksModifier_blockCount").value
+    if(document.getElementById("addBlocksModifier_enabled").checked){
+        if(level.addBlocksModifier == null) level.initAddBlocksMod()
+        level.addBlocksModifier.delay = document.getElementById("addBlocksModifier_delay").value
+        level.addBlocksModifier.duration = document.getElementById("addBlocksModifier_duration").value
+        level.addBlocksModifier.cooldown = document.getElementById("addBlocksModifier_cooldown").value
+        level.addBlocksModifier.blockCount = document.getElementById("addBlocksModifier_blockCount").value
+    }
+    else {
+        level.addBlocksModifier = null
+    }
 
-    level.hideBlocksModifier.enabled = document.getElementById("hideBlocksModifier_enabled").checked
-    level.hideBlocksModifier.delay = document.getElementById("hideBlocksModifier_delay").value
-    level.hideBlocksModifier.duration = document.getElementById("hideBlocksModifier_duration").value
-    level.hideBlocksModifier.gridHidePercent  = document.getElementById("hideBlocksModifier_gridHidePercent").value
-    level.hideBlocksModifier.hideDuration = document.getElementById("hideBlocksModifier_hideDuration").value
-    level.hideBlocksModifier.wait = document.getElementById("hideBlocksModifier_wait").value
+    if(document.getElementById("hideBlocksModifier_enabled").checked){
+        if(level.hideBlocksModifier == null) level.initHideBlocksMod()
+        level.hideBlocksModifier.delay = document.getElementById("hideBlocksModifier_delay").value
+        level.hideBlocksModifier.duration = document.getElementById("hideBlocksModifier_duration").value
+        level.hideBlocksModifier.gridHidePercent  = document.getElementById("hideBlocksModifier_gridHidePercent").value
+        level.hideBlocksModifier.hideDuration = document.getElementById("hideBlocksModifier_hideDuration").value
+        level.hideBlocksModifier.wait = document.getElementById("hideBlocksModifier_wait").value
+    }
+    else {
+        level.hideBlocksModifier = null
+    }
 
     refreshModeSpecificInputs()
     refreshJSON()
@@ -250,10 +277,10 @@ function refreshModeSpecificInputs() {
     document.getElementById("puzzle").style.display = isPuzzle ? 'inline' : 'none'
     document.getElementById("modifiers").style.display = modifiers ? 'inline' : 'none'
 
-    document.getElementById("throwGarbage").style.display = level.throwGarbage.enabled ? 'inline' : 'none'
-    document.getElementById("changeColors").style.display = level.changeColors.enabled ? 'inline' : 'none'
-    document.getElementById("addBlocksModifier").style.display = level.addBlocksModifier.enabled ? 'inline' : 'none'
-    document.getElementById("hideBlocksModifier").style.display = level.hideBlocksModifier.enabled ? 'inline' : 'none'
+    document.getElementById("throwGarbage").style.display = level.throwGarbage != null ? 'inline' : 'none'
+    document.getElementById("changeColors").style.display = level.changeColors != null ? 'inline' : 'none'
+    document.getElementById("addBlocksModifier").style.display = level.addBlocksModifier != null ? 'inline' : 'none'
+    document.getElementById("hideBlocksModifier").style.display = level.hideBlocksModifier != null ? 'inline' : 'none'
 }
 
 function loadJSON() {
@@ -266,7 +293,6 @@ function loadJSON() {
         console.error("Parsing error:", e)
     }
 
-
     refreshAll()
 }
 
@@ -276,11 +302,48 @@ function refreshJSON() {
 }
 
 function importJSON() {
+    var input = document.createElement('input');
+    input.type = 'file';
+    
+    input.onchange = e => { 
+        var file = e.target.files[0];
+       var reader = new FileReader();
+       reader.readAsText(file,'UTF-8');
+       reader.onload = readerEvent => {
+            var content = readerEvent.target.result; 
 
+            console.log("Reloading level from JSON file")
+            try {
+                let newLevel = JSON.parse(content)
+                level = newLevel
+            } catch (e) {
+                console.error("Parsing error:", e)
+            }
+
+            refreshJSON()
+            refreshAll()
+       }
+    }
+    
+    input.click();
 }
 
 function exportJSON() {
-
+    function saveFile(fileName,urlFile){
+        let a = document.createElement("a");
+        a.style = "display: none";
+        document.body.appendChild(a);
+        a.href = urlFile;
+        a.download = fileName;
+        a.click();
+        window.URL.revokeObjectURL(url);
+        a.remove();
+    }
+    
+    let textData = JSON.stringify(level, null, 1);
+    let blobData = new Blob([textData], {type: "text/json"});
+    let url = window.URL.createObjectURL(blobData);
+    saveFile(level.levelName + '.flipon',url);
 }
 
 var level
@@ -305,12 +368,12 @@ function newLevel() {
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
-            [0, 0, 3, 0, 0, 0],
-            [0, 0, 2, 0, 0, 0],
-            [0, 0, 1, 0, 0, 0],
-            [0, 0, 2, 0, 0, 0],
-            [0, 0, 2, 0, 0, 0],
-            [0, 0, 1, 1, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
         ],
         previewLines: 2,
         startLines: 3,
@@ -335,37 +398,46 @@ function newLevel() {
         totalChains: 0,
         digHeight: 0,
         maxMovesCount: 0,
-        throwGarbage: {
-            enabled: false,
+        throwGarbage: null,
+        changeColors: null,
+        addBlocksModifier: null,
+        hideBlocksModifier: null,
+    }
+
+    level.initGarbagesMod = function () {
+        level.throwGarbage = {
             delay: 10,
             duration: 60,
             minFrequency: 0.15,
             maxFrequency: 2,
             playerCooldownSpeed: 0,
             garbageSize: 2
-        },
-        changeColors: {
-            enabled: false,
+        }
+    }
+    level.initChangeColorsMod = function () {
+        level.changeColors ={
             delay: 10,
             duration: 60,
             cooldown: 15,
             addNewColors: false
-        },
-        addBlocksModifier: {
-            enabled: false,
+        }
+    }
+    level.initAddBlocksMod = function () {
+        level.addBlocksModifier = {
             delay: 10,
             duration: 60,
             cooldown: 15,
             blockCount: 2,
             blocksColors: []
-        },
-        hideBlocksModifier: {
-            enabled: false,
+        }
+    }
+    level.initHideBlocksMod = function () {
+        level.hideBlocksModifier = {
             delay: 10,
             duration: 60,
             gridHidePercent: 0.33,
             hideDuration: 3,
             wait: 5
-        },
+        }
     }
 }
