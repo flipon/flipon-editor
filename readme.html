@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/static/favicon.ico">
+  <link href="/static/css/normalize.css" rel="stylesheet">
+  <link href="/static/css/site.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+  <title>Flipon - level editor</title>
+
+  <meta name="twitter:title" content="Flipon">
+  <meta name="twitter:description" content="Flipon is a juicy and fun arcade puzzle game full of surprises!">
+  <meta property="og:title" content="Flipon">
+  <meta property="og:description" content="Flipon is a juicy and fun arcade puzzle game full of surprises!">
+  <meta name="author" content="Damien Mayance">
+  <meta name="description" content="Flipon is a juicy and fun arcade puzzle game full of surprises!">
+  <meta name="keywords"
+    content="damien, mayance, flipon, panel de pon, puzzle league, tetris attack, panic attack, aurélien, regard">
+  <meta property="og:site_name" content="Flipon">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.flipon.net">
+  <meta property="og:locale" content="en">
+  <meta property="og:image" content="https://www.flipon.net/static/images/card.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:height" content="1920">
+  <meta property="og:image:width" content="1080">
+  <meta name="twitter:card" content="photo">
+  <meta name="twitter:site" content="https://www.flipon.net">
+  <meta name="twitter:creator" content="flipongame">
+  <meta name="twitter:url" content="https://www.flipon.net">
+  <meta name="twitter:image:src" content="https://www.flipon.net/static/images/card.png">
+</head>
+
+<body>
+  <div class="page">
+    <header class="page-header">
+      <img class="logo" src="./static/images/logo.png" alt="Flipon logo" />
+      <h1>Level editor: manual</h1>
+      <a href="index.html">BACK TO THE EDITOR</a>
+    </header>
+    <main class="page-content" role="main">
+      <div class="manual">
+        <div>
+        <p>
+          Welcome to the level editor of <a href="https://www.flipon.net">Flipon</a>!
+        </p>
+      </div>
+      <div>
+        <h2>
+          Import a level in the game
+        </h2>
+        <p>
+          The levels of the game should be placed in the StreamingAssets folder of the game installation. Each level is a JSON file with a specific format.
+        </p>
+        <p>
+          Using the latest PC version of the game (1.5.0), you should be able to see your levels in the "Your Levels" menu.
+        </p>
+        <p>
+          Select/Click on your level to play it. That's all!
+        </p>
+      </div>
+      <div>
+        <h2>
+          Use the editor
+        </h2>
+
+        <a href="index.html">TO THE EDITOR</a>
+          <h3>Define the properties</h3>
+          <p>Set the grid size, the level name, and the level type.</p>
+          <p>Then setup the objectives if you want.</p>
+          <h3>Paint the grid</h3>
+          <p>
+            For puzzles and challenges, modes with no scrolling and no new blocks, this is mandatory. You can place blocks on the grid so they are loaded on the level start.
+          </p>
+          <h3>The JSON</h3>
+          <p>You can check the JSON export at anytime. You can modify it, copy/paste, etc</p>
+          <h4>The modifiers</h4>
+          <p>
+            Those are the special events of the levels.
+          </p>
+      </div>
+      <div>
+        <h2>
+          Share your levels
+        </h2>
+        <p>
+          Join our <a href="https://discord.gg/EpNNwhs3">Discord</a> to share your levels with players from all over world!
+        </p>
+      </div>
+    </main>
+
+    <footer class="page-footer">
+      <p>Made with ❤ by Damien Mayance and a talented team.</p>
+    </footer>
+  </div>
+  <script src="./editor.js"></script>
+</body>
+
+</html>
