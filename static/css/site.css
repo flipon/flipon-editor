@@ -66,6 +66,25 @@ a:hover {
   padding-bottom: 100px;
 }
 
+label,
+input {
+  display: inline-block;
+}
+
+label {
+  width: 30%;
+  text-align: right;
+}
+
+label+input {
+  width: 30%;
+  margin: 0 30% 0 4%;
+}
+
+input+input {
+  float: right;
+}
+
 .editor {
   display:table;
 }
@@ -78,6 +97,22 @@ a:hover {
 .grid {
   display:table-cell;
   width:33.33vw;
+}
+
+.palette {
+  border: dashed white;
+}
+
+.palette_item {
+  width: 30px;
+  height: 30px;
+  display: inline;
+}
+
+.palette_selected {
+  width: 35px;
+  height: 35px;
+  border: solid white;
 }
 
 .json {

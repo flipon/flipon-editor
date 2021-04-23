@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link href="/css/normalize.css" rel="stylesheet">
-  <link href="/css/site.css" rel="stylesheet">
+  <link rel="shortcut icon" href="/static/favicon.ico">
+  <link href="/static/css/normalize.css" rel="stylesheet">
+  <link href="/static/css/site.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
   <title>Flipon - level editor</title>
 
@@ -36,191 +36,282 @@
 <body>
   <div class="page">
     <header class="page-header">
-      <a href="https://www.flipon.net"><img class="logo" src="./images/logo.png" alt="Flipon logo" /></a>
+      <a href="https://www.flipon.net"><img class="logo" src="./static/images/logo.png" alt="Flipon logo" /></a>
       <h1>Level editor</h1>
     </header>
     <main class="page-content" role="main">
-      <!-- ------------------------ Settings -------------------------->
-      <div class="settings">
-        <h2>Level settings</h2>
-        <h3>Meta</h3>
-        <div>
-          <label for="author">Author</label>
-          <input type="text" id="author" onchange="updateLevel()" />
-        </div>
-        <div>
-          <label for="levelName">Level Name</label>
-          <input type="text" id="levelName" onchange="updateLevel()" />
-        </div>
-        <div>
-          <label for="description">Description</label>
-          <input type="text" id="description" onchange="updateLevel()" />
-        </div>
-        <h3>General</h3>
-        <div>
-          <label for="levelType">Level Type</label>
-          <select id="levelType" onchange="updateLevel()">
-            <option value="0">Objectives</option>
-            <option value="1">Challenge</option>
-            <option value="2">Puzzle</option>
-            <!-- <option value="3">Versus</option> -->
-            <option value="4">Survival</option>
-          </select>
-        </div>
-        <div>
-          <label for="background">Background Id (-1: random)</label>
-          <input type="number" id="background" oninput="updateLevel()" />
-        </div>
-
-        <div id="scrolling">
-          <div>
-            <label for="startLines">Start lines</label>
-            <input type="number" id="startLines" oninput="updateLevel()" />
-          </div>
-          <div>
-            <label for="previewLines">Preview lines</label>
-            <input type="checkbox" id="previewLines" oninput="updateLevel()" />
-          </div>
-          <div>
-            <label for="startSpeed">Start speed</label>
-            <input type="number" id="startSpeed" oninput="updateLevel()" />
-          </div>
-          <div>
-            <label for="limitSpeed">Speed limit (-1: none)</label>
-            <input type="number" id="limitSpeed" oninput="updateLevel()" />
-          </div>
-          <div>
-            <label for="noScrolling">Disable scrolling</label>
-            <input type="checkbox" id="noScrolling" oninput="updateLevel()" />
-          </div>
-          <div>
-            <label for="noSpeedUp">Disable speed</label>
-            <input type="checkbox" id="noSpeedUp" oninput="updateLevel()" />
-          </div>
-          <div>
-            <label for="seed">Seed</label>
-            <input type="number" id="seed" oninput="updateLevel()" />
-          </div>
-          <div>
-            <label for="timeLimit">Time limit (sec)</label>
-            <input type="number" id="timeLimit" oninput="updateLevel()" />
-          </div>
-        </div>
-        <div id="objectives">
-          <h3>Objectives</h3>
-
-          <div id="objectives-scrolling">
-            <div>
-              <label for="score">Score</label>
-              <input type="number" id="score" oninput="updateLevel()" />
-            </div>
-            <div>
-              <label for="timeReached">Time reached (sec)</label>
-              <input type="number" id="timeReached" oninput="updateLevel()" />
-            </div>
-            <div>
-              <label for="digHeight">Clear depth</label>
-              <input type="number" id="digHeight" oninput="updateLevel()" />
-            </div>
-          </div>
-          <div>
-            <label for="highestCombo">Max multiplier</label>
-            <input type="number" id="highestCombo" oninput="updateLevel()" />
-          </div>
-          <div>
-            <label for="totalCombos">Total combos</label>
-            <input type="number" id="totalCombos" oninput="updateLevel()" />
-          </div>
-          <div>
-            <label for="total4Combos">Total 4-blocks combos</label>
-            <input type="number" id="total4Combos" oninput="updateLevel()" />
-          </div>
-          <div>
-            <label for="total5Combos">Total 5-blocks combos</label>
-            <input type="number" id="total5Combos" oninput="updateLevel()" />
-          </div>
-          <div>
-            <label for="totalLCombos">Total L-shaped combos</label>
-            <input type="number" id="totalLCombos" oninput="updateLevel()" />
-          </div>
-          <div>
-            <label for="totalChains">Total chains</label>
-            <input type="number" id="totalChains" oninput="updateLevel()" />
-          </div>
-          <div>
-            <label for="highestChain">Highest chain</label>
-            <input type="number" id="highestChain" oninput="updateLevel()" />
-          </div>
-        </div>
-        <div id="puzzle">
-          <div>
-            <label for="maxMoves">Max moves (-1 : unlimited)</label>
-            <input type="number" id="maxMoves" oninput="updateLevel()" />
-          </div>
-        </div>
-
-        <h3>Modifiers</h3>
-        <div id="modifiers">
-          <h4>Modifiers</h4>
-          throwGarbage: {
-            enabled: false,
-            delay: 10,
-            duration: 60,
-            minFrequency: 0.15,
-            maxFrequency: 2,
-            playerCooldownSpeed: 0,
-            garbageSize: 2
-        },
-        changeColors: {
-            enabled: false,
-            delay: 10,
-            duration: 60,
-            cooldown: 15,
-            addNewColors: false
-        },
-        addBlocksModifier: {
-            enabled: false,
-            delay: 10,
-            duration: 60,
-            cooldown: 15,
-            blockCount: 2,
-            blocksColors: []
-        },
-        hideBlocksModifier: {
-            enabled: false,
-            delay: 10,
-            duration: 60,
-            gridHidePercent: 0.33,
-            coolhideDurationdown: 3,
-            wait: 5
-        },
-        </div>
+      <!-- ------------------------ Toolbar -------------------------->
+      <div class="toolbar">
+        <button id="btn-import" onclick="clearLevel()">New Level</button>
+        <button id="btn-import" onclick="importJSON()">Import JSON</button>
+        <button id="btn-export" onclick="exportJSON()">Export JSON</button>
       </div>
-      <!-- ------------------------Grid -------------------------->
-      <div class="grid">
-        <h2>Grid</h2>
-        <div>
-          <label for="width">Width</label>
-          <input type="number" id="width" oninput="refreshGridSize()" />
+      <div class="editor">
+        <!-- ------------------------ Settings -------------------------->
+        <div class="settings">
+          <h2>Level settings</h2>
+          <h3>Meta</h3>
+          <div>
+            <label for="author">Author</label>
+            <input type="text" id="author" onchange="updateLevel()" />
+          </div>
+          <div>
+            <label for="levelName">Level Name</label>
+            <input type="text" id="levelName" onchange="updateLevel()" />
+          </div>
+          <div>
+            <label for="description">Description</label>
+            <input type="text" id="description" onchange="updateLevel()" />
+          </div>
+          <h3>General</h3>
+          <div>
+            <label for="levelType">Level Type</label>
+            <select id="levelType" onchange="updateLevel()">
+              <option value="0">Objectives</option>
+              <option value="1">Challenge</option>
+              <option value="2">Puzzle</option>
+              <!-- <option value="3">Versus</option> -->
+              <option value="4">Survival</option>
+            </select>
+          </div>
+          <div>
+            <label for="background">Background Id (-1: random)</label>
+            <input type="number" id="background" oninput="updateLevel()" />
+          </div>
+
+          <div id="scrolling">
+            <div>
+              <label for="startLines">Start lines</label>
+              <input type="number" id="startLines" oninput="updateLevel()" />
+            </div>
+            <div>
+              <label for="previewLines">Preview lines</label>
+              <input type="checkbox" id="previewLines" oninput="updateLevel()" />
+            </div>
+            <div>
+              <label for="startSpeed">Start speed</label>
+              <input type="number" id="startSpeed" oninput="updateLevel()" />
+            </div>
+            <div>
+              <label for="limitSpeed">Speed limit (-1: none)</label>
+              <input type="number" id="limitSpeed" oninput="updateLevel()" />
+            </div>
+            <div>
+              <label for="noScrolling">Disable scrolling</label>
+              <input type="checkbox" id="noScrolling" oninput="updateLevel()" />
+            </div>
+            <div>
+              <label for="noSpeedUp">Disable speed</label>
+              <input type="checkbox" id="noSpeedUp" oninput="updateLevel()" />
+            </div>
+            <div>
+              <label for="seed">Seed</label>
+              <input type="number" id="seed" oninput="updateLevel()" />
+            </div>
+            <div>
+              <label for="timeLimit">Time limit (sec)</label>
+              <input type="number" id="timeLimit" oninput="updateLevel()" />
+            </div>
+          </div>
+          <div id="objectives">
+            <h3>Objectives</h3>
+
+            <div id="objectives-scrolling">
+              <div>
+                <label for="score">Score</label>
+                <input type="number" id="score" oninput="updateLevel()" />
+              </div>
+              <div>
+                <label for="timeReached">Time reached (sec)</label>
+                <input type="number" id="timeReached" oninput="updateLevel()" />
+              </div>
+              <div>
+                <label for="digHeight">Clear depth</label>
+                <input type="number" id="digHeight" oninput="updateLevel()" />
+              </div>
+            </div>
+            <div>
+              <label for="highestCombo">Max multiplier</label>
+              <input type="number" id="highestCombo" oninput="updateLevel()" />
+            </div>
+            <div>
+              <label for="totalCombos">Total combos</label>
+              <input type="number" id="totalCombos" oninput="updateLevel()" />
+            </div>
+            <div>
+              <label for="total4Combos">Total 4-blocks combos</label>
+              <input type="number" id="total4Combos" oninput="updateLevel()" />
+            </div>
+            <div>
+              <label for="total5Combos">Total 5-blocks combos</label>
+              <input type="number" id="total5Combos" oninput="updateLevel()" />
+            </div>
+            <div>
+              <label for="totalLCombos">Total L-shaped combos</label>
+              <input type="number" id="totalLCombos" oninput="updateLevel()" />
+            </div>
+            <div>
+              <label for="totalChains">Total chains</label>
+              <input type="number" id="totalChains" oninput="updateLevel()" />
+            </div>
+            <div>
+              <label for="highestChain">Highest chain</label>
+              <input type="number" id="highestChain" oninput="updateLevel()" />
+            </div>
+          </div>
+          <div id="puzzle">
+            <div>
+              <label for="maxMoves">Max moves (-1 : unlimited)</label>
+              <input type="number" id="maxMoves" oninput="updateLevel()" />
+            </div>
+          </div>
+
+          <h3>Modifiers</h3>
+          <div id="modifiers">
+            <h4>Modifiers (events)</h4>
+            <div>
+              <h5>Garbages Generation</h5>
+              <div>
+                <label for="throwGarbage_enable">Enable</label>
+                <input type="checkbox" id="throwGarbage_enabled" oninput="updateLevel()" />
+              </div>
+              <div id="throwGarbage">
+                <div>
+                  <label for="throwGarbage_delay">Delay (sec)</label>
+                  <input type="number" id="throwGarbage_delay" oninput="updateLevel()" />
+                </div>
+                <div>
+                  <label for="throwGarbage_duration">Duration (sec)</label>
+                  <input type="number" id="throwGarbage_duration" oninput="updateLevel()" />
+                </div>
+                <div>
+                  <label for="throwGarbage_minFrequency">Min frequency (sec)</label>
+                  <input type="number" id="throwGarbage_minFrequency" oninput="updateLevel()" />
+                </div>
+                <div>
+                  <label for="throwGarbage_maxFrequency">Max frequency (sec)</label>
+                  <input type="number" id="throwGarbage_maxFrequency" oninput="updateLevel()" />
+                </div>
+                <div>
+                  <label for="throwGarbage_garbageSize">Garbages size</label>
+                  <input type="number" id="throwGarbage_garbageSize" oninput="updateLevel()" />
+                </div>
+              </div>
+            </div>
+            <div>
+              <h5>Change colors</h5>
+              <div>
+                <label for="changeColors_enabled">Enable</label>
+                <input type="checkbox" id="changeColors_enabled" oninput="updateLevel()" />
+              </div>
+              <div id="changeColors">
+                <div>
+                  <label for="changeColors_delay">Delay (sec)</label>
+                  <input type="number" id="changeColors_delay" oninput="updateLevel()" />
+                </div>
+                <div>
+                  <label for="changeColors_duration">Duration (sec)</label>
+                  <input type="number" id="changeColors_duration" oninput="updateLevel()" />
+                </div>
+                <div>
+                  <label for="changeColors_cooldown">Cooldown (sec)</label>
+                  <input type="number" id="changeColors_cooldown" oninput="updateLevel()" />
+                </div>
+                <div>
+                  <label for="changeColors_addNewColors">Add new colors</label>
+                  <input type="checkbox" id="changeColors_addNewColors" oninput="updateLevel()" />
+                </div>
+              </div>
+            </div>
+            <div>
+              <h5>Add blocks</h5>
+              <div>
+                <label for="addBlocksModifier_enable">Enable</label>
+                <input type="checkbox" id="addBlocksModifier_enabled" oninput="updateLevel()" />
+              </div>
+              <div id="addBlocksModifier">
+                <div>
+                  <label for="addBlocksModifier_delay">Delay (sec)</label>
+                  <input type="number" id="addBlocksModifier_delay" oninput="updateLevel()" />
+                </div>
+                <div>
+                  <label for="addBlocksModifier_duration">Duration (sec)</label>
+                  <input type="number" id="addBlocksModifier_duration" oninput="updateLevel()" />
+                </div>
+                <div>
+                  <label for="addBlocksModifier_cooldown">Cooldown (sec)</label>
+                  <input type="number" id="addBlocksModifier_cooldown" oninput="updateLevel()" />
+                </div>
+                <div>
+                  <label for="addBlocksModifier_blockCount">Blocks to add</label>
+                  <input type="number" id="addBlocksModifier_blockCount" oninput="updateLevel()" />
+                </div>
+              </div>
+            </div>
+            <div>
+              <h5>Hide grid</h5>
+              <div>
+                <label for="hideBlocksModifier_enable">Enable</label>
+                <input type="checkbox" id="hideBlocksModifier_enabled" oninput="updateLevel()" />
+              </div>
+              <div id="hideBlocksModifier">
+                <div>
+                  <label for="hideBlocksModifier_delay">Delay (sec)</label>
+                  <input type="number" id="hideBlocksModifier_delay" oninput="updateLevel()" />
+                </div>
+                <div>
+                  <label for="hideBlocksModifier_duration">Duration (sec)</label>
+                  <input type="number" id="hideBlocksModifier_duration" oninput="updateLevel()" />
+                </div>
+                <div>
+                  <label for="hideBlocksModifier_gridHidePercent">% of the grid to hide</label>
+                  <input type="number" id="hideBlocksModifier_gridHidePercent" oninput="updateLevel()" />
+                </div>
+                <div>
+                  <label for="hideBlocksModifier_hideDuration">Hide duration (sec)</label>
+                  <input type="number" id="hideBlocksModifier_hideDuration" oninput="updateLevel()" />
+                </div>
+                <div>
+                  <label for="hideBlocksModifier_wait">Wait (sec)</label>
+                  <input type="number" id="hideBlocksModifier_wait" oninput="updateLevel()" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <label for="width">Height</label>
-          <input type="number" id="height" oninput="refreshGridSize()" />
+        <!-- ------------------------Grid -------------------------->
+        <div class="grid">
+          <h2>Grid</h2>
+          <div>
+            <label for="width">Width</label>
+            <input type="number" id="width" oninput="refreshGridSize()" />
+          </div>
+          <div>
+            <label for="width">Height</label>
+            <input type="number" id="height" oninput="refreshGridSize()" />
+          </div>
+          <div>
+
+            <div class="palette">
+              <img class="palette_item" id="blank" src="./static/images/blank.png" onclick="selectPalette(0)" />
+              <img class="palette_item" id="blue" src="./static/images/blue.png" onclick="selectPalette(1)" />
+              <img class="palette_item" id="yellow" src="./static/images/yellow.png" onclick="selectPalette(2)" />
+              <img class="palette_item" id="pink" src="./static/images/pink.png" onclick="selectPalette(3)" />
+              <img class="palette_item" id="red" src="./static/images/red.png" onclick="selectPalette(4)" />
+              <img class="palette_item" id="green" src="./static/images/green.png" onclick="selectPalette(5)" />
+              <img class="palette_item" id="purple" src="./static/images/purple.png" onclick="selectPalette(6)" />
+              <img class="palette_item" id="garbage" src="./static/images/garbage.png" onclick="selectPalette(9)" />
+            </div>
+            <canvas id="editor-grid"></canvas>
+          </div>
         </div>
-        <div>
-          <canvas id="editor-grid" />
-        </div>
-      </div>
-      <!-- ------------------------ JSON -------------------------->
-      <div class="json">
-        <h2>JSON</h2>
-        <div>
-          <button id="btn-import" onclick="importJSON()">Import JSON</button>
-          <button id="btn-export" onclick="exportJSON()">Export JSON</button>
-        </div>
-        <div>
-          <textarea class="json-text" id="json-text" onchange="loadJSON()">
-            </textarea>
+        <!-- ------------------------ JSON -------------------------->
+        <div class="json">
+          <h2>JSON</h2>
+          <div>
+            <textarea class="json-text" id="json-text" onchange="loadJSON()">
+              </textarea>
+          </div>
         </div>
       </div>
 
