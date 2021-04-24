@@ -72,17 +72,27 @@ input {
 }
 
 label {
-  width: 30%;
+  width: 40%;
   text-align: right;
 }
 
 label+input {
   width: 30%;
-  margin: 0 30% 0 4%;
+  margin: 0 18% 0 4%;
+}
+
+label+select {
+  width: 30%;
+  margin: 0 10% 0 4%;
 }
 
 input+input {
   float: right;
+}
+
+label+textarea {
+  width: 42%;
+  margin: 0 0% 0 4%;
 }
 
 .editor {
@@ -91,16 +101,45 @@ input+input {
 
 .settings {
   display:table-cell;
-  width:33.33vw;
+  width:33vw;
+}
+
+.small-number {
+  width: 42px;
+}
+
+input[type=checkbox] {
+  width: auto;
 }
 
 .grid {
   display:table-cell;
-  width:33.33vw;
+  width:33vw;
+}
+
+.grid-container {
+  width: 100%;
+  text-align:center;
+}
+
+canvas {
+  display: inline;
+}
+
+.modifier {
+  border: dashed white 1px;
+  margin-bottom: 21px;
+}
+
+h5 {
+  margin: 10px;
 }
 
 .palette {
-  border: dashed white;
+  border: dashed white 1px;
+  height: 50px;
+  text-align: center;
+  margin: 12px;
 }
 
 .palette_item {
@@ -110,14 +149,15 @@ input+input {
 }
 
 .palette_selected {
-  width: 35px;
-  height: 35px;
+  width: 31px;
+  height: 31px;
   border: solid white;
 }
 
 .json {
   display:table-cell;
-  width:33.33vw;
+  width:33vw;
+  text-align: center;
 }
 
 .json-text {
@@ -130,7 +170,18 @@ input+input {
  **************************************************************/
 
  .manual {
-  text-align: justify;
+  max-width: 650px;
+  padding: 0 20px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  min-height: 100%;
+}
+
+h1,
+h2 {
+  font-family: 'Walibi';
+  text-transform: uppercase;
 }
 
 /**************************************************************
@@ -141,10 +192,85 @@ input+input {
   display: table;
   padding: 24px 0px 12px;
   width: 100%;
+  text-align: center;
 }
 
 .logo {
   width: 150px;
+}
+
+.links {
+  text-align: center;
+  margin-top: 21px;
+  margin-bottom: 21px;
+}
+
+.links ul {
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: space-around;
+
+  list-style: none;
+  padding: 0 0 0 0;
+}
+
+.link {
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 150px;
+  height: 25pt;
+
+  padding: 0.2rem 0.15rem 0.5rem;
+
+  font-family: 'Walibi';
+  text-transform: uppercase;
+  text-align: center;
+
+  transition: all 0.2s ease-out;
+}
+
+.link:hover {
+  color: white;
+  transform: scale(1.1) translateY(-1px);
+}
+
+.link-icon {
+  width: 26px;
+  margin-right: 6px;
+}
+
+.link-blue {
+  background-image: url('../images/btn01.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.link-red {
+  background-image: url('../images/btn02.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.link-green {
+  background-image: url('../images/btn05.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.link-orange {
+  background-image: url('../images/btn06.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.link-purple {
+  background-image: url('../images/btn04.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 /**************************************************************

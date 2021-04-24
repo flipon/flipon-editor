@@ -41,12 +41,17 @@
     </header>
     <main class="page-content" role="main">
       <!-- ------------------------ Toolbar -------------------------->
-      <div class="toolbar">
-        <a href="readme.html">HELP</a>
-        <button id="btn-import" onclick="clearLevel()">New Level</button>
-        <button id="btn-import" onclick="importJSON()">Import JSON</button>
-        <button id="btn-export" onclick="exportJSON()">Export JSON</button>
-        <a href="https://www.flipon.net">THE GAME</a>
+      <div class="links">
+        <ul>
+          <li><a class="link link-green" href="https://www.flipon.net">THE GAME</a></li>
+          <li><a class="link link-blue" href="readme.html">HELP</a></li>
+          <li></li>
+          <li></li>
+          <li><a class="link link-red" href="#" id="btn-new" onclick="clearLevel()">New Level</a></li>
+          <li><a class="link link-orange" href="#" id="btn-import" onclick="importJSON()">Import JSON</a></li>
+          <li><a class="link link-purple" href="#" id="btn-export" onclick="exportJSON()">Export JSON</a></li>
+          
+        </ul>
       </div>
       <div class="editor">
         <!-- ------------------------ Settings -------------------------->
@@ -63,7 +68,7 @@
           </div>
           <div>
             <label for="description">Description</label>
-            <input type="text" id="description" onchange="updateLevel()" />
+            <textarea id="description" rows="3" onchange="updateLevel()"> </textarea>
           </div>
           <h3>General</h3>
           <div>
@@ -77,42 +82,61 @@
             </select>
           </div>
           <div>
-            <label for="background">Background Id (-1: random)</label>
-            <input type="number" id="background" oninput="updateLevel()" />
+            <label for="background">Background</label>
+            <select id="background" oninput="updateLevel()" >
+              <option value="0">Random</option>
+              <option value="1">World 1</option>
+              <option value="2">World 2</option>
+              <option value="3">World 3</option>
+              <option value="4">World 4</option>
+              <option value="5">World 5</option>
+              <option value="6">Versus</option>
+            </select>
+
           </div>
 
           <div id="scrolling">
             <div>
               <label for="startLines">Start lines</label>
-              <input type="number" id="startLines" oninput="updateLevel()" />
+              <input type="number" id="startLines" oninput="updateLevel()" 
+                     class="small-number" min="0" max="10" step="1"
+              />
             </div>
             <div>
               <label for="previewLines">Preview lines</label>
-              <input type="checkbox" id="previewLines" oninput="updateLevel()" />
+              <input class="checkbox" type="checkbox" id="previewLines" oninput="updateLevel()" />
             </div>
             <div>
               <label for="startSpeed">Start speed</label>
-              <input type="number" id="startSpeed" oninput="updateLevel()" />
+              <input type="number" id="startSpeed" oninput="updateLevel()" 
+                     class="small-number" min="0" max="10" step="1"
+              />
             </div>
             <div>
-              <label for="limitSpeed">Speed limit (-1: none)</label>
-              <input type="number" id="limitSpeed" oninput="updateLevel()" />
+              <label for="limitSpeed">Speed limit</label>
+              <input type="number" id="limitSpeed" oninput="updateLevel()"
+                     class="small-number" min="0" max="25" step="1"
+              />
             </div>
             <div>
               <label for="noScrolling">Disable scrolling</label>
               <input type="checkbox" id="noScrolling" oninput="updateLevel()" />
             </div>
             <div>
-              <label for="noSpeedUp">Disable speed</label>
+              <label for="noSpeedUp">Disable speed up</label>
               <input type="checkbox" id="noSpeedUp" oninput="updateLevel()" />
             </div>
             <div>
               <label for="seed">Seed</label>
-              <input type="number" id="seed" oninput="updateLevel()" />
+              <input type="number" id="seed" oninput="updateLevel()" 
+                     min="-1" step="1"
+              />
             </div>
             <div>
               <label for="timeLimit">Time limit (sec)</label>
-              <input type="number" id="timeLimit" oninput="updateLevel()" />
+              <input type="number" id="timeLimit" oninput="updateLevel()" 
+                    class="duration" min="0" step="0.1"
+                    />
             </div>
           </div>
           <div id="objectives">
@@ -121,61 +145,70 @@
             <div id="objectives-scrolling">
               <div>
                 <label for="score">Score</label>
-                <input type="number" id="score" oninput="updateLevel()" />
+                <input type="number" id="score" oninput="updateLevel()"
+                  min="0" step="250" />
               </div>
               <div>
                 <label for="timeReached">Time reached (sec)</label>
-                <input type="number" id="timeReached" oninput="updateLevel()" />
+                <input type="number" id="timeReached" oninput="updateLevel()" 
+                class="duration" min="0" step="0.1"/>
               </div>
               <div>
                 <label for="digHeight">Clear depth</label>
-                <input type="number" id="digHeight" oninput="updateLevel()" />
+                <input type="number" id="digHeight" oninput="updateLevel()" 
+                class="small-number" min="0" step="1"/>
               </div>
             </div>
             <div>
               <label for="highestCombo">Max multiplier</label>
-              <input type="number" id="highestCombo" oninput="updateLevel()" />
+              <input type="number" id="highestCombo" oninput="updateLevel()" 
+              class="small-number" min="0"/>
             </div>
             <div>
               <label for="totalCombos">Total combos</label>
-              <input type="number" id="totalCombos" oninput="updateLevel()" />
+              <input type="number" id="totalCombos" oninput="updateLevel()"
+              class="small-number" min="0" />
             </div>
             <div>
-              <label for="total4Combos">Total 4-blocks combos</label>
-              <input type="number" id="total4Combos" oninput="updateLevel()" />
+              <label for="total4Combos">4-blocks combos</label>
+              <input type="number" id="total4Combos" oninput="updateLevel()" 
+              class="small-number" min="0" />
             </div>
             <div>
-              <label for="total5Combos">Total 5-blocks combos</label>
-              <input type="number" id="total5Combos" oninput="updateLevel()" />
+              <label for="total5Combos">5-blocks combos</label>
+              <input type="number" id="total5Combos" oninput="updateLevel()"
+              class="small-number" min="0" />
             </div>
             <div>
-              <label for="totalLCombos">Total L-shaped combos</label>
-              <input type="number" id="totalLCombos" oninput="updateLevel()" />
+              <label for="totalLCombos">L-shaped combos</label>
+              <input type="number" id="totalLCombos" oninput="updateLevel()" 
+              class="small-number" min="0" />
             </div>
             <div>
               <label for="totalChains">Total chains</label>
-              <input type="number" id="totalChains" oninput="updateLevel()" />
+              <input type="number" id="totalChains" oninput="updateLevel()" 
+              class="small-number" min="0" />
             </div>
             <div>
               <label for="highestChain">Highest chain</label>
-              <input type="number" id="highestChain" oninput="updateLevel()" />
+              <input type="number" id="highestChain" oninput="updateLevel()" 
+              class="small-number" min="0" />
             </div>
           </div>
           <div id="puzzle">
             <div>
               <label for="maxMoves">Max moves (-1 : unlimited)</label>
-              <input type="number" id="maxMoves" oninput="updateLevel()" />
+              <input type="number" id="maxMoves" oninput="updateLevel()"
+              min="-1" class="small-number" />
             </div>
           </div>
 
-          <h3>Modifiers</h3>
+          <h3>Modifiers (events)</h3>
           <div id="modifiers">
-            <h4>Modifiers (events)</h4>
-            <div>
-              <h5>Garbages Generation</h5>
+            <div class="modifier">
               <div>
-                <label for="throwGarbage_enable">Enable</label>
-                <input type="checkbox" id="throwGarbage_enabled" oninput="updateLevel()" />
+                <input type="checkbox" id="throwGarbage_enabled" oninput="updateLevel()" />                
+                <label for="throwGarbage_enable"><h5>Garbages Generation</h5></label>
               </div>
               <div id="throwGarbage">
                 <div>
@@ -200,11 +233,10 @@
                 </div>
               </div>
             </div>
-            <div>
-              <h5>Change colors</h5>
+            <div class="modifier">
               <div>
-                <label for="changeColors_enabled">Enable</label>
                 <input type="checkbox" id="changeColors_enabled" oninput="updateLevel()" />
+                <label for="changeColors_enabled"><h5>Change colors</h5></label>
               </div>
               <div id="changeColors">
                 <div>
@@ -225,11 +257,10 @@
                 </div>
               </div>
             </div>
-            <div>
-              <h5>Add blocks</h5>
+            <div class="modifier">
               <div>
-                <label for="addBlocksModifier_enable">Enable</label>
                 <input type="checkbox" id="addBlocksModifier_enabled" oninput="updateLevel()" />
+                <label for="addBlocksModifier_enable"><h5>Add blocks</h5></label>
               </div>
               <div id="addBlocksModifier">
                 <div>
@@ -250,11 +281,10 @@
                 </div>
               </div>
             </div>
-            <div>
-              <h5>Hide grid</h5>
+            <div class="modifier">
               <div>
-                <label for="hideBlocksModifier_enable">Enable</label>
                 <input type="checkbox" id="hideBlocksModifier_enabled" oninput="updateLevel()" />
+                <label for="hideBlocksModifier_enable"><h5>Hide grid</h5></label>
               </div>
               <div id="hideBlocksModifier">
                 <div>
@@ -286,14 +316,12 @@
           <h2>Grid</h2>
           <div>
             <label for="width">Width</label>
-            <input type="number" id="width" oninput="refreshGridSize()" />
-          </div>
-          <div>
+            <input type="number" id="width" oninput="refreshGridSize()" 
+            class="small-number" step="1" min="2" max="20"/>
             <label for="width">Height</label>
-            <input type="number" id="height" oninput="refreshGridSize()" />
+            <input type="number" id="height" oninput="refreshGridSize()" 
+            class="small-number" step="1" min="8" max="22"/>
           </div>
-          <div>
-
             <div class="palette">
               <img class="palette_item" id="blank" src="./static/images/blank.png" onclick="selectPalette(0)" />
               <img class="palette_item" id="blue" src="./static/images/blue.png" onclick="selectPalette(1)" />
@@ -304,6 +332,8 @@
               <img class="palette_item" id="purple" src="./static/images/purple.png" onclick="selectPalette(6)" />
               <img class="palette_item" id="garbage" src="./static/images/garbage.png" onclick="selectPalette(9)" />
             </div>
+
+          <div class="grid-container">
             <canvas id="editor-grid"></canvas>
           </div>
         </div>
