@@ -213,23 +213,28 @@
               <div id="throwGarbage">
                 <div>
                   <label for="throwGarbage_delay">Delay (sec)</label>
-                  <input type="number" id="throwGarbage_delay" oninput="updateLevel()" />
+                  <input type="number" id="throwGarbage_delay" oninput="updateLevel()" 
+                  min="1" step="0.1" />
                 </div>
                 <div>
                   <label for="throwGarbage_duration">Duration (sec)</label>
-                  <input type="number" id="throwGarbage_duration" oninput="updateLevel()" />
+                  <input type="number" id="throwGarbage_duration" oninput="updateLevel()" 
+                  min="1" step="0.1" />
                 </div>
                 <div>
                   <label for="throwGarbage_minFrequency">Min frequency (sec)</label>
-                  <input type="number" id="throwGarbage_minFrequency" oninput="updateLevel()" />
+                  <input type="number" id="throwGarbage_minFrequency" oninput="updateLevel()"
+                  min="1" step="0.1" />
                 </div>
                 <div>
                   <label for="throwGarbage_maxFrequency">Max frequency (sec)</label>
-                  <input type="number" id="throwGarbage_maxFrequency" oninput="updateLevel()" />
+                  <input type="number" id="throwGarbage_maxFrequency" oninput="updateLevel()"
+                  min="1" step="0.1" />
                 </div>
                 <div>
                   <label for="throwGarbage_garbageSize">Garbages size</label>
-                  <input type="number" id="throwGarbage_garbageSize" oninput="updateLevel()" />
+                  <input type="number" id="throwGarbage_garbageSize" oninput="updateLevel()" 
+                  class="small-number" min="1" max="10" step="1"/>
                 </div>
               </div>
             </div>
@@ -241,15 +246,18 @@
               <div id="changeColors">
                 <div>
                   <label for="changeColors_delay">Delay (sec)</label>
-                  <input type="number" id="changeColors_delay" oninput="updateLevel()" />
+                  <input type="number" id="changeColors_delay" oninput="updateLevel()" 
+                  min="1" step="0.1" />
                 </div>
                 <div>
                   <label for="changeColors_duration">Duration (sec)</label>
-                  <input type="number" id="changeColors_duration" oninput="updateLevel()" />
+                  <input type="number" id="changeColors_duration" oninput="updateLevel()" 
+                  min="1" step="0.1" />
                 </div>
                 <div>
                   <label for="changeColors_cooldown">Cooldown (sec)</label>
-                  <input type="number" id="changeColors_cooldown" oninput="updateLevel()" />
+                  <input type="number" id="changeColors_cooldown" oninput="updateLevel()" 
+                  min="1" step="0.1" />
                 </div>
                 <div>
                   <label for="changeColors_addNewColors">Add new colors</label>
@@ -265,19 +273,23 @@
               <div id="addBlocksModifier">
                 <div>
                   <label for="addBlocksModifier_delay">Delay (sec)</label>
-                  <input type="number" id="addBlocksModifier_delay" oninput="updateLevel()" />
+                  <input type="number" id="addBlocksModifier_delay" oninput="updateLevel()" 
+                  min="1" step="0.1" />
                 </div>
                 <div>
                   <label for="addBlocksModifier_duration">Duration (sec)</label>
-                  <input type="number" id="addBlocksModifier_duration" oninput="updateLevel()" />
+                  <input type="number" id="addBlocksModifier_duration" oninput="updateLevel()" 
+                  min="1" step="0.1" />
                 </div>
                 <div>
                   <label for="addBlocksModifier_cooldown">Cooldown (sec)</label>
-                  <input type="number" id="addBlocksModifier_cooldown" oninput="updateLevel()" />
+                  <input type="number" id="addBlocksModifier_cooldown" oninput="updateLevel()"
+                  min="1" step="0.1" />
                 </div>
                 <div>
                   <label for="addBlocksModifier_blockCount">Blocks to add</label>
-                  <input type="number" id="addBlocksModifier_blockCount" oninput="updateLevel()" />
+                  <input type="number" id="addBlocksModifier_blockCount" oninput="updateLevel()"
+                  class="small-numver" min="1" step="1" />
                 </div>
               </div>
             </div>
@@ -289,23 +301,28 @@
               <div id="hideBlocksModifier">
                 <div>
                   <label for="hideBlocksModifier_delay">Delay (sec)</label>
-                  <input type="number" id="hideBlocksModifier_delay" oninput="updateLevel()" />
+                  <input type="number" id="hideBlocksModifier_delay" oninput="updateLevel()" 
+                  min="1" step="0.1" />
                 </div>
                 <div>
                   <label for="hideBlocksModifier_duration">Duration (sec)</label>
-                  <input type="number" id="hideBlocksModifier_duration" oninput="updateLevel()" />
+                  <input type="number" id="hideBlocksModifier_duration" oninput="updateLevel()" 
+                  min="1" step="0.1" />
                 </div>
                 <div>
                   <label for="hideBlocksModifier_gridHidePercent">% of the grid to hide</label>
-                  <input type="number" id="hideBlocksModifier_gridHidePercent" oninput="updateLevel()" />
+                  <input type="number" id="hideBlocksModifier_gridHidePercent" oninput="updateLevel()" 
+                  min="0.01" step="0.05" />
                 </div>
                 <div>
                   <label for="hideBlocksModifier_hideDuration">Hide duration (sec)</label>
-                  <input type="number" id="hideBlocksModifier_hideDuration" oninput="updateLevel()" />
+                  <input type="number" id="hideBlocksModifier_hideDuration" oninput="updateLevel()" 
+                  min="1" step="0.1" />
                 </div>
                 <div>
                   <label for="hideBlocksModifier_wait">Wait (sec)</label>
-                  <input type="number" id="hideBlocksModifier_wait" oninput="updateLevel()" />
+                  <input type="number" id="hideBlocksModifier_wait" oninput="updateLevel()" 
+                  min="1" step="0.1" />
                 </div>
               </div>
             </div>

@@ -110,6 +110,7 @@ label+textarea {
 
 input[type=checkbox] {
   width: auto;
+  height: 22px;
 }
 
 .grid {
