@@ -38,27 +38,56 @@
     <header class="page-header">
       <img class="logo" src="./static/images/logo.png" alt="Flipon logo" />
       <h1>Level editor: manual</h1>
-      <a href="index.html">BACK TO THE EDITOR</a>
+      <div class="links">
+        <ul>
+          <li>
+            <a class="link link-blue" href="index.html">THE EDITOR</a>
+          </li>
+          <li>
+            <a class="link link-red" href="https://www.flipon.net">THE GAME</a>
+          </li>
+          <li>
+            <a class="link link-green" href="https://discord.gg/7jFZ2fC">THE DISCORD</a>
+          </li>
+        </ul>
+      </div>
+      
     </header>
     <main class="page-content" role="main">
       <div class="manual">
         <div>
         <p>
-          Welcome to the level editor of <a href="https://www.flipon.net">Flipon</a>!
+          Welcome to the level editor of <strong><a href="https://www.flipon.net">Flipon!</a></strong>
         </p>
+        <p>You'll be able to recreate most of the levels of the game, except fights (for now).</p>
       </div>
       <div>
         <h2>
           Import a level in the game
         </h2>
         <p>
-          The levels of the game should be placed in the StreamingAssets folder of the game installation. Each level is a JSON file with a specific format.
+          The levels of the game should be placed in the <strong>StreamingAssets/levels</strong> folder of the game installation. Each level is a JSON file with a specific format.
+        </p>
+        <p>
+          <img src="static/doc/streamingassets.png" />
         </p>
         <p>
           Using the latest PC version of the game (1.5.0), you should be able to see your levels in the "Your Levels" menu.
         </p>
         <p>
-          Select/Click on your level to play it. That's all!
+          <img src="static/doc/menu.png" />
+        </p>
+        <p>
+          Browse the list and Select/Click on your level to play it. That's all!
+        </p>
+        <p>
+          <img src="static/doc/yourlevels.png" />
+        </p>
+        <p>
+          <ul>
+            <li>...: open the StreamingAssets folder</li>
+            <li>refresh: re-scan the levels folders</li>
+          </ul>
         </p>
       </div>
       <div>
@@ -66,20 +95,32 @@
           Use the editor
         </h2>
 
-        <a href="index.html">TO THE EDITOR</a>
+        <a class="link link-blue" href="index.html">TO THE EDITOR</a>
           <h3>Define the properties</h3>
-          <p>Set the grid size, the level name, and the level type.</p>
+          <p>Set the "meta" informations: the level name, your name and a brief description.</p>
+          <p><img src="static/doc/meta.png" /> </p>
+          <p>Those information are displayed in the game menu and it will help players find your levels in the interface.</p>
+
+          <h3>General properties</h3>
+          <p><img src="static/doc/general.png" /> </p>
+
           <p>Then setup the objectives if you want.</p>
+
+          <p><img src="static/doc/objectives.png" /> </p>
           <h3>Paint the grid</h3>
           <p>
             For puzzles and challenges, modes with no scrolling and no new blocks, this is mandatory. You can place blocks on the grid so they are loaded on the level start.
           </p>
+          <p><img src="static/doc/grid.png" /> </p>
           <h3>The JSON</h3>
           <p>You can check the JSON export at anytime. You can modify it, copy/paste, etc</p>
+          <p><img src="static/doc/json.png" /> </p>
           <h4>The modifiers</h4>
           <p>
             Those are the special events of the levels.
           </p>
+          <p><img src="static/doc/modifiers_off.png" /> </p>
+          <p><img src="static/doc/modifiers_on.png" /> </p>
       </div>
       <div>
         <h2>
@@ -95,7 +136,6 @@
       <p>Made with ❤ by Damien Mayance and a talented team.</p>
     </footer>
   </div>
-  <script src="./editor.js"></script>
 </body>
 
 </html>

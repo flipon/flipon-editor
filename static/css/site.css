@@ -13,7 +13,7 @@
 html {
   font-family: 'Rubik', sans-serif;
   background: #0e0613 none repeat scroll 0% 0%;
-  background-repeat: repeat; */
+  background-repeat: repeat; 
   /* background-image: url('../images/background2.jpg'); */
 }
 
@@ -185,6 +185,10 @@ h2 {
   text-transform: uppercase;
 }
 
+.manual img {
+  width: 420px;
+}
+
 /**************************************************************
  * Banner
  **************************************************************/
@@ -210,10 +214,15 @@ h2 {
   display: flex;
   flex-wrap: wrap;
 
-  justify-content: space-around;
+  justify-content: center;
 
   list-style: none;
   padding: 0 0 0 0;
+}
+
+.links li {
+  margin-left: 12px;
+  margin-right: 12px;
 }
 
 .link {
