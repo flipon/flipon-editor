@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="/static/favicon.ico">
-  <link href="/static/css/normalize.css" rel="stylesheet">
-  <link href="/static/css/site.css" rel="stylesheet">
+  <link rel="shortcut icon" href="static/favicon.ico">
+  <link href="static/css/normalize.css" rel="stylesheet">
+  <link href="static/css/site.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
   <title>Flipon - level editor</title>
 
@@ -60,16 +60,20 @@
           Welcome to the level editor of <strong><a href="https://www.flipon.net">Flipon!</a></strong>
         </p>
         <p>You'll be able to recreate most of the levels of the game, except fights (for now).</p>
+        <p>Note: this is a PC only feature for now.</p>
       </div>
       <div>
         <h2>
-          Import a level in the game
+          🚀 Import a level in the game
         </h2>
         <p>
           The levels of the game should be placed in the <strong>StreamingAssets/levels</strong> folder of the game installation. Each level is a JSON file with a specific format.
         </p>
         <p>
           <img src="static/doc/streamingassets.png" />
+        </p>
+        <p>
+          💡 Don't know where this folder is? Use the "..." button in the game submenu! (see below)
         </p>
         <p>
           Using the latest PC version of the game (1.5.0), you should be able to see your levels in the "Your Levels" menu.
@@ -85,50 +89,137 @@
         </p>
         <p>
           <ul>
-            <li>...: open the StreamingAssets folder</li>
-            <li>refresh: re-scan the levels folders</li>
+            <li>...: open the StreamingAssets folder 🪄</li>
+            <li>🔄: re-scan the levels folders</li>
           </ul>
         </p>
       </div>
       <div>
         <h2>
-          Use the editor
+          🛠 Use the editor
         </h2>
 
         <a class="link link-blue" href="index.html">TO THE EDITOR</a>
-          <h3>Define the properties</h3>
+          <h3>📝 Meta properties</h3>
           <p>Set the "meta" informations: the level name, your name and a brief description.</p>
           <p><img src="static/doc/meta.png" /> </p>
           <p>Those information are displayed in the game menu and it will help players find your levels in the interface.</p>
 
-          <h3>General properties</h3>
+          <h3>🔧 General properties</h3>
+
           <p><img src="static/doc/general.png" /> </p>
+          <ul>
+            <li>Level type: pretty self explanatory. It will change the rules used to detect the level end.</li>
+            <li>Background: the background image to use</li>
+            <li>Start lines: number of pre-filled grid lines when level starts</li>
+            <li>Preview lines: see what's coming next</li>
+            <li>Start speed: the speed level when level starts</li>
+            <li>Speed limit: the maximum speed level</li>
+            <li>Disable scrolling: no new lines will be generated</li>
+            <li>Disable speed up: the speed level will not change</li>
+            <li>Seed: set the random's seed so the level is always the same when you restart</li>
+            <li>Time limit: time given to complete the level in seconds</li>
+          </ul>
 
           <p>Then setup the objectives if you want.</p>
-
           <p><img src="static/doc/objectives.png" /> </p>
-          <h3>Paint the grid</h3>
+          <p>
+            ⚠️ Do not use more than 4 objectives!
+          </p>
+          <ul>
+            <li>Score: points to reach</li>
+            <li>Time reached: time to survive in seconds</li>
+            <li>Clear depth: the number of lines of clear</li>
+            <li>Max multiplier: the best multiplier ("x42") to reach</li>
+            <li>Total combos: the count of combos to achieve</li>
+            <li>4-blocks combos: the count of 4-blocks combos to achieve</li>
+            <li>5-blocks combos: the count of 5-blocks combos to achieve</li>
+            <li>L-shaped combos: the count of L-shaped combos to achieve</li>
+            <li>Total chains: The count of chains to achieve</li>
+            <li>Highest chains: The highest chain multiplier to reach. ⚠ this can be hard</li>
+          </ul>
+          <h3>🎨 Paint the grid</h3>
           <p>
             For puzzles and challenges, modes with no scrolling and no new blocks, this is mandatory. You can place blocks on the grid so they are loaded on the level start.
           </p>
           <p><img src="static/doc/grid.png" /> </p>
+          <p>Set the grid size (width > 2, height should be > 8).</p>
+          <p>💡 Big grids are fun! But not compatible with mobile.</p>
+          <p>
+            How to paint on grid?
+          </p>
+          <ul>
+            <li>Select a block to paint in the top palette.</li>
+            <li>Click on a cell to add a block</li>
+            <li>The first block is a clear cell</li>
+          </ul>
           <h3>The JSON</h3>
           <p>You can check the JSON export at anytime. You can modify it, copy/paste, etc</p>
+          <p>Editor will refresh as soon as you leave the text area.</p>
           <p><img src="static/doc/json.png" /> </p>
-          <h4>The modifiers</h4>
+          <h4>🔥 The modifiers</h4>
           <p>
             Those are the special events of the levels.
           </p>
+          <p>They are disabled by default.</p>
           <p><img src="static/doc/modifiers_off.png" /> </p>
-          <p><img src="static/doc/modifiers_on.png" /> </p>
+          <p>Click on a any checkbox to enable a modifier.</p>
+          <p>⚠️ Do not use more than 4 at once.</p>
+          <h5>
+            Garbage generation
+          </h5>
+          <p>Make garbages falls!</p>
+          <p><img src="static/doc/mod_garbages.png" /> </p>
+          <ul>
+            <li>Delay: time (seconds) before the event starts</li>
+            <li>Duration: time (seconds) until the event stops</li>
+            <li>Min Frequency: random minimal time (seconds) between 2 garbages</li>
+            <li>Max Frequency: random maximal time (seconds) between 2 garbages</li>
+            <li>Garbage size: width of the garbage to generate</li>
+          </ul>
+          <h5>
+            Color change
+          </h5>
+          <p>Change the blocks of the grid visually, but not the layout.</p>
+          <p><img src="static/doc/mod_changecolors.png" /> </p>
+          <ul>
+            <li>Delay: time (seconds) before the event starts</li>
+            <li>Duration: time (seconds) until the event stops</li>
+            <li>Cooldown: time (seconds) to wait between two effects</li>
+            <li>Add new colors: introduce new colors.</li>
+          </ul>
+          <h5>
+            Add blocks
+          </h5>
+          <p>Make blocks falls!</p>
+          <p><img src="static/doc/mod_add.png" /> </p>
+          <ul>
+            <li>Delay: time (seconds) before the event starts</li>
+            <li>Duration: time (seconds) until the event stops</li>
+            <li>Cooldown: time (seconds) to wait between two effects</li>
+            <li>Blocks to add: count of blocks to add</li>
+          </ul>
+          <h5>
+            Hide grid
+          </h5>
+          <p>Hide a % of the grid for few seconds</p>
+          <p><img src="static/doc/mod_hide.png" /> </p>
+          <ul>
+            <li>Delay: time (seconds) before the event starts</li>
+            <li>Duration: time (seconds) until the event stops</li>
+            <li>% of the grid: 0: grid fully visible, 1: grid fully hidden. 0.5 = 50%.</li>
+            <li>Hide duration: time (seconds) of the grid being hidden</li>
+            <li>Wait: time (seconds) to wait between two effects</li>
+          </ul>
       </div>
       <div>
         <h2>
-          Share your levels
+          💌 Share your levels
         </h2>
         <p>
           Join our <a href="https://discord.gg/EpNNwhs3">Discord</a> to share your levels with players from all over world!
         </p>
+        <p>Note: a better solution may come later.</p>
       </div>
     </main>
 

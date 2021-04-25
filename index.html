@@ -289,7 +289,7 @@
                 <div>
                   <label for="addBlocksModifier_blockCount">Blocks to add</label>
                   <input type="number" id="addBlocksModifier_blockCount" oninput="updateLevel()"
-                  class="small-numver" min="1" step="1" />
+                  class="small-number" min="1" step="1" />
                 </div>
               </div>
             </div>
@@ -312,7 +312,7 @@
                 <div>
                   <label for="hideBlocksModifier_gridHidePercent">% of the grid to hide</label>
                   <input type="number" id="hideBlocksModifier_gridHidePercent" oninput="updateLevel()" 
-                  min="0.01" step="0.05" />
+                  class="small-number" min="0" max="1" step="0.05" />
                 </div>
                 <div>
                   <label for="hideBlocksModifier_hideDuration">Hide duration (sec)</label>
