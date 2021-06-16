@@ -354,11 +354,23 @@ function clearLevel() {
 }
 
 function newLevel() {
+
+    var date = new Date();
+    var day = date.getDate();       // yields date
+    var month = date.getMonth() + 1;    // yields month (add one as '.getMonth()' is zero indexed)
+    var year = date.getFullYear();  // yields year
+    var hour = date.getHours();     // yields hours 
+    var minute = date.getMinutes(); // yields minutes
+    var second = date.getSeconds(); // yields seconds
+
+    // https://stackoverflow.com/questions/6702705/how-to-convert-javascript-datetime-to-c-sharp-datetime
+    var csharpDate = day + "/" + month + "/" + year + " " + hour + ':' + minute + ':' + second; 
+
     level = {
         author: "Me",
         levelName: "My super level",
         description: "A level for Flipon",
-        date: "",
+        date: csharpDate,
         levelType: 0,
         background: 0,
         width: 6,
