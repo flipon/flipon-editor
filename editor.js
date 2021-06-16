@@ -356,15 +356,12 @@ function clearLevel() {
 function newLevel() {
 
     var date = new Date();
-    var day = date.getDate();       // yields date
-    var month = date.getMonth() + 1;    // yields month (add one as '.getMonth()' is zero indexed)
-    var year = date.getFullYear();  // yields year
-    var hour = date.getHours();     // yields hours 
-    var minute = date.getMinutes(); // yields minutes
-    var second = date.getSeconds(); // yields seconds
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
 
     // https://stackoverflow.com/questions/6702705/how-to-convert-javascript-datetime-to-c-sharp-datetime
-    var csharpDate = day + "/" + month + "/" + year + " " + hour + ':' + minute + ':' + second; 
+    var csharpDate = year + "-" + month + "-" + day; 
 
     level = {
         author: "Me",
