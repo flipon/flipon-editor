@@ -45,8 +45,9 @@ function fillInputs() {
     document.getElementById("digHeight").value = level.digHeight
     document.getElementById("maxMoves").value = level.maxMovesCount
     
-    document.getElementById("throwGarbage_enabled").value = level.throwGarbage != null
+    document.getElementById("throwGarbage_enabled").checked = level.throwGarbage != null
     if(level.throwGarbage != null) {
+        document.getElementById("throwGarbage_enabled").value = true
         document.getElementById("throwGarbage_delay").value = level.throwGarbage.delay
         document.getElementById("throwGarbage_duration").value = level.throwGarbage.duration
         document.getElementById("throwGarbage_minFrequency").value = level.throwGarbage.minFrequency
@@ -54,7 +55,7 @@ function fillInputs() {
         document.getElementById("throwGarbage_garbageSize").value = level.throwGarbage.garbageSize
         document.getElementById("throwGarbage_playerCooldownSpeed").value = level.throwGarbage.playerCooldownSpeed
     }
-    document.getElementById("changeColors_enabled").value = level.changeColors != null
+    document.getElementById("changeColors_enabled").checked = level.changeColors != null
     if(level.changeColors != null) {
         document.getElementById("changeColors_delay").value = level.changeColors.delay
         document.getElementById("changeColors_duration").value = level.changeColors.duration
@@ -62,7 +63,7 @@ function fillInputs() {
         document.getElementById("changeColors_addNewColors").value = level.changeColors.addNewColors
     }
 
-    document.getElementById("addBlocksModifier_enabled").value = level.addBlocksModifier != null
+    document.getElementById("addBlocksModifier_enabled").checked = level.addBlocksModifier != null
     if(level.addBlocksModifier != null) {
         document.getElementById("addBlocksModifier_delay").value = level.addBlocksModifier.delay
         document.getElementById("addBlocksModifier_duration").value = level.addBlocksModifier.duration
@@ -70,7 +71,7 @@ function fillInputs() {
         document.getElementById("addBlocksModifier_blockCount").value = level.addBlocksModifier.blockCount
     }
 
-    document.getElementById("hideBlocksModifier_enabled").value = level.hideBlocksModifier != null
+    document.getElementById("hideBlocksModifier_enabled").checked = level.hideBlocksModifier != null
     if(level.hideBlocksModifier != null) {
         document.getElementById("hideBlocksModifier_delay").value = level.hideBlocksModifier.delay
         document.getElementById("hideBlocksModifier_duration").value = level.hideBlocksModifier.duration
