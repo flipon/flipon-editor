@@ -52,6 +52,7 @@ function fillInputs() {
         document.getElementById("throwGarbage_minFrequency").value = level.throwGarbage.minFrequency
         document.getElementById("throwGarbage_maxFrequency").value = level.throwGarbage.maxFrequency
         document.getElementById("throwGarbage_garbageSize").value = level.throwGarbage.garbageSize
+        document.getElementById("throwGarbage_playerCooldownSpeed").value = level.throwGarbage.playerCooldownSpeed
     }
     document.getElementById("changeColors_enabled").value = level.changeColors != null
     if(level.changeColors != null) {
@@ -111,46 +112,67 @@ function updateLevel() {
     level.maxMovesCount = document.getElementById("maxMoves").value
 
     if(document.getElementById("throwGarbage_enabled").checked){
-        if(level.throwGarbage == null) level.initGarbagesMod()
-        level.throwGarbage.delay = document.getElementById("throwGarbage_delay").value
-        level.throwGarbage.duration = document.getElementById("throwGarbage_duration").value
-        level.throwGarbage.minFrequency = document.getElementById("throwGarbage_minFrequency").value
-        level.throwGarbage.maxFrequency = document.getElementById("throwGarbage_maxFrequency").value
-        level.throwGarbage.garbageSize = document.getElementById("throwGarbage_garbageSize").value
+        if(level.throwGarbage == null) {
+            level.initGarbagesMod()
+            fillInputs()
+        }
+        else {
+            level.throwGarbage.delay = document.getElementById("throwGarbage_delay").value
+            level.throwGarbage.duration = document.getElementById("throwGarbage_duration").value
+            level.throwGarbage.minFrequency = document.getElementById("throwGarbage_minFrequency").value
+            level.throwGarbage.maxFrequency = document.getElementById("throwGarbage_maxFrequency").value
+            level.throwGarbage.garbageSize = document.getElementById("throwGarbage_garbageSize").value
+            level.throwGarbage.playerCooldownSpeed = document.getElementById("throwGarbage_playerCooldownSpeed").value
+        }
     }
     else {
         level.throwGarbage = null
     }
 
     if(document.getElementById("changeColors_enabled").checked){
-        if(level.changeColors == null) level.initChangeColorsMod()
-        level.changeColors.delay = document.getElementById("changeColors_delay").value
-        level.changeColors.duration = document.getElementById("changeColors_duration").value
-        level.changeColors.cooldown = document.getElementById("changeColors_cooldown").value
-        level.changeColors.addNewColors = document.getElementById("changeColors_addNewColors").value
+        if(level.changeColors == null) {
+            level.initChangeColorsMod()
+            fillInputs()
+        }
+        else {
+            level.changeColors.delay = document.getElementById("changeColors_delay").value
+            level.changeColors.duration = document.getElementById("changeColors_duration").value
+            level.changeColors.cooldown = document.getElementById("changeColors_cooldown").value
+            level.changeColors.addNewColors = document.getElementById("changeColors_addNewColors").value
+        }
     }
     else {
         level.changeColors = null
     }
 
     if(document.getElementById("addBlocksModifier_enabled").checked){
-        if(level.addBlocksModifier == null) level.initAddBlocksMod()
-        level.addBlocksModifier.delay = document.getElementById("addBlocksModifier_delay").value
-        level.addBlocksModifier.duration = document.getElementById("addBlocksModifier_duration").value
-        level.addBlocksModifier.cooldown = document.getElementById("addBlocksModifier_cooldown").value
-        level.addBlocksModifier.blockCount = document.getElementById("addBlocksModifier_blockCount").value
+        if(level.addBlocksModifier == null) {
+            level.initAddBlocksMod()
+            fillInputs()
+        }
+        else {
+            level.addBlocksModifier.delay = document.getElementById("addBlocksModifier_delay").value
+            level.addBlocksModifier.duration = document.getElementById("addBlocksModifier_duration").value
+            level.addBlocksModifier.cooldown = document.getElementById("addBlocksModifier_cooldown").value
+            level.addBlocksModifier.blockCount = document.getElementById("addBlocksModifier_blockCount").value
+        }
     }
     else {
         level.addBlocksModifier = null
     }
 
     if(document.getElementById("hideBlocksModifier_enabled").checked){
-        if(level.hideBlocksModifier == null) level.initHideBlocksMod()
-        level.hideBlocksModifier.delay = document.getElementById("hideBlocksModifier_delay").value
-        level.hideBlocksModifier.duration = document.getElementById("hideBlocksModifier_duration").value
-        level.hideBlocksModifier.gridHidePercent  = document.getElementById("hideBlocksModifier_gridHidePercent").value
-        level.hideBlocksModifier.hideDuration = document.getElementById("hideBlocksModifier_hideDuration").value
-        level.hideBlocksModifier.wait = document.getElementById("hideBlocksModifier_wait").value
+        if(level.hideBlocksModifier == null) {
+            level.initHideBlocksMod()
+            fillInputs()
+        }
+        else {
+            level.hideBlocksModifier.delay = document.getElementById("hideBlocksModifier_delay").value
+            level.hideBlocksModifier.duration = document.getElementById("hideBlocksModifier_duration").value
+            level.hideBlocksModifier.gridHidePercent  = document.getElementById("hideBlocksModifier_gridHidePercent").value
+            level.hideBlocksModifier.hideDuration = document.getElementById("hideBlocksModifier_hideDuration").value
+            level.hideBlocksModifier.wait = document.getElementById("hideBlocksModifier_wait").value
+        }
     }
     else {
         level.hideBlocksModifier = null
@@ -419,7 +441,7 @@ function newLevel() {
             duration: 60,
             minFrequency: 0.15,
             maxFrequency: 2,
-            playerCooldownSpeed: 0,
+            playerCooldownSpeed: 1,
             garbageSize: 2
         }
     }
