@@ -1,4 +1,9 @@
+const version = "1.0.1"
+
 window.addEventListener("load", function () {
+    
+    document.getElementById("version").textContent = version
+
     clearLevel()
 
     canvas.addEventListener('mousedown', canvasClick)
